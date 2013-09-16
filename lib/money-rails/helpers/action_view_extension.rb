@@ -13,7 +13,8 @@ module MoneyRails
 
       options = {
         :no_cents_if_whole => true,
-        :symbol => false
+        :symbol => false,
+        :rounded_infinite_precision => true
       }.merge(options)
 
       if value.is_a?(Money)

@@ -26,6 +26,18 @@ describe 'MoneyRails::ActionViewExtension' do
       end
       it { should include Money.default_currency.symbol }
     end
+
+    context 'with infinite precision' do
+      before do
+        Money.infinite_precision = true
+      end
+      after do
+        Money.infinite_precision = false
+      end
+      it "should round displayed value" do
+        helper.humanized_money(Money.new(12500.1)).should == "125"
+      end
+    end
   end
 
   describe '#humanized_money_with_symbol' do
